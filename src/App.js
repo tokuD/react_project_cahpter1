@@ -1,25 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import List from './components/List'
+import { AppBar, createTheme, IconButton, ThemeProvider, Toolbar, Typography } from '@mui/material'
+import MenuIcon from "@mui/icons-material/Menu"
+import { grey } from '@mui/material/colors';
+
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+  }
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <AppBar position='static'>
+        <Toolbar variant='dense'>
+          <IconButton edge='start' sx={{ mr: 2}}>
+            <MenuIcon/>
+          </IconButton>
+          <Typography variant='h6'>
+            Rick and Morty
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <List />
+    </ThemeProvider>
+  )
 }
 
 export default App;
